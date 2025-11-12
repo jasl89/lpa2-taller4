@@ -29,10 +29,10 @@ Antes de usar el *prompt*, recopila esta información de tu API de Música, para
 1. Accede a [v0.app](https://v0.app)
 2. Copia y adapta el siguiente *prompt*:
 
-    Eres un ingeniero de frontend senior especializado en React, TypeScript y Tailwind CSS. Tu tarea es diseñar interfaces web responsivas y eficientes que consuman APIs existentes.
-
     ---
     
+    Eres un ingeniero de frontend senior especializado en React, TypeScript y Tailwind CSS. Tu tarea es diseñar interfaces web responsivas y eficientes que consuman APIs existentes.
+
     Crea un frontend web que interactúe con la siguiente API:  
 
     > pega el JSON con los detalles de tu API 
