@@ -1,5 +1,8 @@
 # Frontend para el API de Música
 
+**Autor:** Jhon Salcedo ([@jasl89](https://github.com/jasl89))  
+**Email:** salcedo.lenis@gmail.com
+
 ## Descripción
 
 En este taller generarás el frontend para el API de Música desarrollada en el lpa2-taller3 usando la herramienta [v0.app](https://v0.app/) y un *prompt* especializado.
