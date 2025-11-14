@@ -3,28 +3,28 @@ import { Usuario, CreateUsuarioRequest, UpdateUsuarioRequest, ApiResponse, ApiLi
 
 export const usuariosService = {
   getAll: async (skip = 0, limit = 10) => {
-    const response = await apiClient.get<ApiListResponse<Usuario>>('/usuarios', {
+    const response = await apiClient.get<ApiListResponse<Usuario>>('/usuarios/', {
       params: { skip, limit },
     })
     return response.data.data
   },
 
   getById: async (id: number) => {
-    const response = await apiClient.get<Usuario>(`/usuarios/${id}`)
+    const response = await apiClient.get<Usuario>(`/usuarios/${id}/`)
     return response.data
   },
 
   create: async (data: CreateUsuarioRequest) => {
-    const response = await apiClient.post<Usuario>('/usuarios', data)
+    const response = await apiClient.post<Usuario>('/usuarios/', data)
     return response.data
   },
 
   update: async (id: number, data: UpdateUsuarioRequest) => {
-    const response = await apiClient.patch<Usuario>(`/usuarios/${id}`, data)
+    const response = await apiClient.patch<Usuario>(`/usuarios/${id}/`, data)
     return response.data
   },
 
   delete: async (id: number) => {
-    await apiClient.delete(`/usuarios/${id}`)
+    await apiClient.delete(`/usuarios/${id}/`)
   },
 }
