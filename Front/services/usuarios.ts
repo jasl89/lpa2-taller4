@@ -3,10 +3,10 @@ import { Usuario, CreateUsuarioRequest, UpdateUsuarioRequest, ApiResponse, ApiLi
 
 export const usuariosService = {
   getAll: async (skip = 0, limit = 10) => {
-    const response = await apiClient.get<ApiListResponse<Usuario>>('/usuarios/', {
+    const response = await apiClient.get<Usuario[]>('/usuarios/', {
       params: { skip, limit },
     })
-    return response.data.data
+    return response.data
   },
 
   getById: async (id: number) => {

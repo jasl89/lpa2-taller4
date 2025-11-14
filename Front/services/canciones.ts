@@ -3,10 +3,10 @@ import { Cancion, CreateCancionRequest, UpdateCancionRequest, ApiListResponse } 
 
 export const cancionesService = {
   getAll: async (skip = 0, limit = 10, artista?: string, genero?: string) => {
-    const response = await apiClient.get<ApiListResponse<Cancion>>('/canciones/', {
+    const response = await apiClient.get<Cancion[]>('/canciones/', {
       params: { skip, limit, artista, genero },
     })
-    return response.data.data
+    return response.data
   },
 
   getById: async (id: number) => {

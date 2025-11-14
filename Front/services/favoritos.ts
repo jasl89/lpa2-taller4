@@ -3,15 +3,15 @@ import { Favorito, FavoritoConDetalles, CreateFavoritoRequest, ApiListResponse }
 
 export const favoritosService = {
   getAll: async (skip = 0, limit = 10) => {
-    const response = await apiClient.get<ApiListResponse<Favorito>>('/favoritos/', {
+    const response = await apiClient.get<Favorito[]>('/favoritos/', {
       params: { skip, limit },
     })
-    return response.data.data
+    return response.data
   },
 
   getByUsuario: async (usuarioId: number) => {
-    const response = await apiClient.get<ApiListResponse<FavoritoConDetalles>>(`/favoritos/usuario/${usuarioId}/`)
-    return response.data.data
+    const response = await apiClient.get<FavoritoConDetalles[]>(`/favoritos/usuario/${usuarioId}/`)
+    return response.data
   },
 
   create: async (data: CreateFavoritoRequest) => {
