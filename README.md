@@ -7,6 +7,12 @@
 
 En este taller generarás el frontend para el API de Música desarrollada en el lpa2-taller3 usando la herramienta [v0.app](https://v0.app/) y un *prompt* especializado.
 
+##  Autor
+
+**Jhon Salcedo**
+- Email: salcedo.lenis@gmail.com
+- GitHub: [@jasl89](https://github.com/jasl89)
+
 ## Prerrequisitos
 
 - API del lpa2-taller3 funcionando localmente

@@ -22,23 +22,23 @@ export function ConfirmDialog({ title, message, onConfirm, onCancel }: ConfirmDi
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-lg max-w-sm w-full">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999] p-4">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full transform transition-all">
         <div className="p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">{title}</h2>
-          <p className="text-gray-600 mb-6">{message}</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">{title}</h2>
+          <p className="text-gray-600 mb-8 text-base">{message}</p>
           <div className="flex gap-3">
             <button
               onClick={onCancel}
               disabled={loading}
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+              className="flex-1 px-5 py-3 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-all font-medium disabled:opacity-50"
             >
               Cancelar
             </button>
             <button
               onClick={handleConfirm}
               disabled={loading}
-              className="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50"
+              className="flex-1 px-5 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl hover:from-red-600 hover:to-red-700 transition-all font-medium disabled:opacity-50 shadow-lg hover:shadow-xl"
             >
               {loading ? 'Eliminando...' : 'Eliminar'}
             </button>
