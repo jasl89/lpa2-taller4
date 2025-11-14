@@ -5,76 +5,155 @@
 
 ## Descripción
 
-En este taller generarás el frontend para el API de Música desarrollada en el lpa2-taller3 usando la herramienta [v0.app](https://v0.app/) y un *prompt* especializado.
+Frontend profesional para el API de Música desarrollado con Next.js 16, React 19, TypeScript y Tailwind CSS 4. Proporciona una interfaz moderna y responsiva para la gestión de usuarios, canciones y favoritos.
+## Tecnologías
 
-##  Autor
+- **Next.js 16.0.3** - Framework React con Turbopack
+- **React 19.2.0** - Biblioteca UI
+- **TypeScript 5** - Tipado estático
+- **Tailwind CSS 4.1.17** - Estilos utility-first
+- **Axios** - Cliente HTTP
+- **Radix UI** - Componentes accesibles
+- **Lucide React** - Iconos
+- **Sonner** - Notificaciones toast
+- **Vitest** - Framework de testing
 
-**Jhon Salcedo**
-- Email: salcedo.lenis@gmail.com
-- GitHub: [@jasl89](https://github.com/jasl89)
+## Características
+
+- Dashboard con estadísticas y gráficos
+- Gestión completa de usuarios (CRUD)
+- Administración de canciones
+- Sistema de favoritos por usuario
+- Diseño responsivo con gradientes modernos
+- Validación de formularios
+- Manejo de errores profesional
+- Animaciones suaves
+- Testing unitario
 
 ## Prerrequisitos
 
-- API del lpa2-taller3 funcionando localmente
 - Node.js 18+ instalado
-- Cuenta en [v0.app](https://v0.app)
+- PNPM (gestor de paquetes)
+- API del backend corriendo en `http://localhost:8081/api`
 
-## Preparar la información de tu API
+## Instalación
 
-Antes de usar el *prompt*, recopila esta información de tu API de Música, para cada *endpoint*:
-
-```json
-{
-  "endpoint": "http://localhost:3000/api/tu-endpoint",
-  "método": "GET/POST/PUT/DELETE",
-  "body_request": {"clave": "valor"},
-  "body_response": {"data": [], "message": "string"},
-  "errores": {"400": "Bad Request", "500": "Server Error"}
-}
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/jasl89/lpa2-taller4.git
+cd lpa2-taller4/Front
 ```
 
-## Usar el *Prompt* en v0.app
+2. Instalar PNPM (si no lo tienes):
+```bash
+sudo npm install -g pnpm
+```
 
-1. Accede a [v0.app](https://v0.app)
-2. Copia y adapta el siguiente *prompt*:
+3. Instalar dependencias:
+```bash
+pnpm install
+```
 
-    ---
-    
-    Eres un ingeniero de frontend senior especializado en React, TypeScript y Tailwind CSS. Tu tarea es diseñar interfaces web responsivas y eficientes que consuman APIs existentes.
+4. Configurar variables de entorno (opcional):
+```bash
+# Crear archivo .env.local
+NEXT_PUBLIC_API_URL=http://localhost:8081/api
+```
 
-    Crea un frontend web que interactúe con la siguiente API:  
+## Ejecución
 
-    > pega el JSON con los detalles de tu API 
+### Modo desarrollo
+```bash
+pnpm dev
+```
+Abre [http://localhost:3001](http://localhost:3001) en tu navegador.
 
-    Requisitos funcionales:  
+### Modo producción
+```bash
+pnpm build
+pnpm start
+```
 
-    1. **Interfaz de usuario**:  
+## Scripts disponibles
 
-        - [ESPECIFICA: Diseño esperado (ej: formulario de login, dashboard de datos, tabla editable)]  
-        - [ESPECIFICA: Estados de carga/éxito/error]  
-        - [ESPECIFICA: Comportamientos interactivos (ej: validación en tiempo real, paginación)]
+- `pnpm dev` - Inicia servidor de desarrollo
+- `pnpm build` - Construye la aplicación para producción
+- `pnpm start` - Inicia servidor de producción
+- `pnpm lint` - Ejecuta el linter
+- `pnpm format` - Formatea el código con Prettier
+- `pnpm test` - Ejecuta los tests
 
-    2. **Lógica de integración**:  
+## Estructura del proyecto
 
-        - Implementa manejo de errores robusto  
-        - Optimiza el rendimiento (ej: caching, lazy loading)  
-        - [ESPECIFICA: Validaciones de datos necesarias]
+```
+Front/
+├── app/                    # Páginas y layouts de Next.js
+├── components/             # Componentes React
+│   ├── layout/            # Layout (Sidebar, Header)
+│   ├── pages/             # Componentes de páginas
+│   ├── ui/                # Componentes UI reutilizables
+│   ├── usuarios/          # Componentes específicos de usuarios
+│   ├── canciones/         # Componentes específicos de canciones
+│   └── favoritos/         # Componentes específicos de favoritos
+├── lib/                   # Utilidades y configuración
+│   ├── api-client.ts      # Cliente Axios configurado
+│   └── utils.ts           # Funciones auxiliares
+├── services/              # Servicios de API
+│   ├── usuarios.ts
+│   ├── canciones.ts
+│   └── favoritos.ts
+├── types/                 # Definiciones TypeScript
+└── __tests__/            # Tests unitarios
+```
 
-    ---
+## Configuración de Git Hooks
 
-## Generar y Descargar el Código
+El proyecto usa Husky para ejecutar hooks de git automáticamente:
 
-1. Ejecuta el *prompt* en [v0.app](https://v0.app)
-2. Revisa el *preview* y realiza los ajustes necesarios
-3. Descarga el `ZIP` con la aplicación
-4. Ve al proyecto: `cd proyectos/lpa2-taller4`
-5. Descomprime el `ZIP` en este directorio
-6. Configurar Node v20: `curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -`
-7. Instalar Node/NPM: `sudo apt install nodejs -y`
-8. Instalar PNPM: `sudo npm install -g pnpm`
-9. Instalar las dependencias del proyecto: `pnpm install`
-10. Ejecutar en modo desarrollo: `pnpm dev`
-11. Abrir la aplicación en: [localhost:3000](http://localhost:3000/)
-12. Revisa y ajusta la configuración del API
-13. Para ejecutar en modo producción: `pnpm build` y luego: `pnpm start`
+- **pre-commit**: Ejecuta lint-staged (ESLint + Prettier)
+- **commit-msg**: Valida formato de conventional commits
+
+## Convenciones de commits
+
+Este proyecto sigue [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat:` - Nueva funcionalidad
+- `fix:` - Corrección de bugs
+- `docs:` - Cambios en documentación
+- `style:` - Cambios de formato
+- `refactor:` - Refactorización de código
+- `test:` - Añadir o modificar tests
+- `chore:` - Tareas de mantenimiento
+
+## API Backend
+
+El frontend espera que el backend esté corriendo en `http://localhost:8081/api` con los siguientes endpoints:
+
+### Usuarios
+- `GET /usuarios/` - Listar usuarios
+- `POST /usuarios/` - Crear usuario
+- `PUT /usuarios/{id}` - Actualizar usuario
+- `DELETE /usuarios/{id}` - Eliminar usuario
+
+### Canciones
+- `GET /canciones/` - Listar canciones
+- `POST /canciones/` - Crear canción
+- `PUT /canciones/{id}` - Actualizar canción
+- `DELETE /canciones/{id}` - Eliminar canción
+- `GET /canciones/top` - Top canciones
+
+### Favoritos
+- `GET /favoritos/usuario/{usuario_id}` - Favoritos de usuario
+- `POST /favoritos/` - Agregar favorito
+- `DELETE /favoritos/{id}` - Eliminar favorito
+
+## Licencia
+
+MIT
+
+## Autor
+
+**Jhon Salcedo**
+- GitHub: [@jasl89](https://github.com/jasl89)
+- Email: salcedo.lenis@gmail.com
 
