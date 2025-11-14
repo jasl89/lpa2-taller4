@@ -20,16 +20,29 @@ apiClient.interceptors.response.use(
     let errorMessage = 'Error del servidor. Intenta nuevamente.'
 
     if (status === 400) {
-      errorMessage = data?.message || 'Datos inválidos'
+      errorMessage = data?.detail || data?.message || 'Datos inválidos o duplicados'
     } else if (status === 404) {
-      errorMessage = 'No encontrado'
+      errorMessage = data?.detail || 'Recurso no encontrado'
     } else if (status === 422) {
-      errorMessage = data?.message || 'Validación fallida'
+      // Handle FastAPI validation errors
+      if (data?.detail && Array.isArray(data.detail)) {
+        const errors = data.detail.map((err: any) => 
+          `${err.loc?.join(' → ') || 'Campo'}: ${err.msg}`
+        ).join(', ')
+        errorMessage = errors
+      } else {
+        errorMessage = data?.detail || data?.message || 'Error de validación'
+      }
     } else if (status === 500) {
-      errorMessage = 'Error del servidor. Intenta nuevamente.'
+      errorMessage = 'Error interno del servidor'
+    } else if (!error.response) {
+      errorMessage = 'No se pudo conectar con el servidor. Verifica tu conexión.'
     }
 
     console.error('[API Error]', { status, message: errorMessage, data })
+    
+    // Show toast notification
+    toast.error(errorMessage)
 
     return Promise.reject({
       status,
